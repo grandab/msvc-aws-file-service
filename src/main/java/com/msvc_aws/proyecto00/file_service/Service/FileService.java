@@ -57,7 +57,7 @@ public class FileService {
         {
             appFileServiceLookup.tag("call", "appfile-service");
             UserResponse userResponse = wwbCliBuilder.build().get()
-                    .uri("http://localhost:8087/msvcaws/users/{userId}", appFileRequest.getUserid())
+                    .uri("http://user-service:8087/msvcaws/users/{userId}", appFileRequest.getUserid())
                     .retrieve()
                     .bodyToMono(UserResponse.class)
                     .block();
@@ -76,8 +76,8 @@ public class FileService {
         {
             fileRepository.save(appFile);
             String forKafka = appFile.getUserid()+" and date "+ appFile.getLastUpdate() ;
-            TransactionPlacedEvent event = new TransactionPlacedEvent(forKafka);
-            kafkaTemplate.send("notificationTopic", event);
+            //TransactionPlacedEvent event = new TransactionPlacedEvent(forKafka);
+           // kafkaTemplate.send("notificationTopic", event);
             return " Datos guardados";
         }
         else

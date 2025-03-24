@@ -16,4 +16,4 @@ COPY target/file-service-0.0.1-SNAPSHOT.jar file-service-0.0.1-SNAPSHOT.jar
 EXPOSE 8086
 
 # Run the application
-ENTRYPOINT ["java", "-jar", "file-server-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "file-service-0.0.1-SNAPSHOT.jar"]
